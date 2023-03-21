@@ -23,16 +23,32 @@ const users = ref([
 ])
 
 const addUser = function(){
-  alert('hello')
+  console.log(input.value)
+  if(input.value.firstName && input.value.lastName){
+    users.value.push(input.value)
+    console.log(users.value)
+    input.value = {
+      firstName: '',
+      lastName: '',
+      isMember: false,
+    }
+  }
 }
 
 </script>
 <template>
   <h1 :class="{red:isRed}" :title="title">{{ message }}{{ fullName }}</h1>
+  <form @submit.prevent="addUser">
     <input type="text" v-model="input.firstName">
     <input type="text" v-model="input.lastName">
     <input type="checkbox" v-model="input.isMember">
-    <button @click="addUser">登録</button>
+    <button>登録</button>
+  </form>
+  <ul>
+    <li v-for="u in users">
+      {{ u.firstName }} {{ u.lastName }}
+    </li>
+  </ul>
 </template>
 
 <style>
