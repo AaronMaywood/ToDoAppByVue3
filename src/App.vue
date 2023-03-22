@@ -2,7 +2,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 const newTodo = ref('')
-const todos = reactive([
+let todos = reactive([
   {
     message:'ToDoアプリのプロトタイプを作る',
     isComplete: true,
@@ -34,7 +34,12 @@ const deleteCompleted = () => {
   todos はconst なので上書きできない。
   また、let todos にしたとしても、上書きすることで reactive() オブジェクト
   でなくなってしまうかもしれない？
+  
+  ↓let todos を上書きしてみたが、やはり reactive() オブジェクトではなくなってしまっている
+    See:
+    https://i.gyazo.com/5a5ed99e0b551fbcde197b737ad6723c.png
   */
+  todos = todos.filter(t=>t.isComplete)
 }
 </script>
 
