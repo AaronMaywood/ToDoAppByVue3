@@ -37,10 +37,12 @@ const addTodo = function(){
   newTodo.value = ''
 }
 const checkUpdate = function(e){
-  console.log(e.target)
+  console.log(e)
   // checked情報は↓のようにして取得できる
   console.log(e.target.checked)
   // どうやって自身の状態をアップデートしたらいい？
+  // →バインディングを使用すればよい→バインディングを行えばこのメソッドも不要だし、オブジェクトのkey管理も不要
+  //    → checkbox にv-model を指定した。むちゃくちゃ楽だ！
 }
 
 const deleteCompleted = () => {
@@ -70,7 +72,7 @@ const deleteCompleted = () => {
       <label>
         <input type="checkbox"
           @click="checkUpdate"
-          v-bind:checked="t.isComplete"
+          v-model="t.isComplete"
         >{{ t.message }}
       </label>
     </li>
