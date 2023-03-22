@@ -17,6 +17,6 @@ const addTodo = (e) => {
   </MyButton>
   <form @submit.prevent="addTodo">
     <input type="text" v-model="newTodo">
-	<MyButton>追加</MyButton>
+	<MyButton><img src="../assets/icon-plus.svg" width="10" height="10" alt=""> 追加</MyButton>
   </form>
 </template>
