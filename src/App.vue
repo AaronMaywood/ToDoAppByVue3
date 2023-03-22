@@ -3,7 +3,6 @@
 import { ref, reactive } from 'vue'
 import TodoAdd from './components/TodoAdd.vue'
 
-const newTodo = ref('')
 let todos = ref([
   {
     message:'データが何もない時、リストの位置に「ToDoがまだありません！」と表示する',
@@ -31,16 +30,15 @@ let todos = ref([
   },
 ])
 
-const addTodo = function(){
-	alert('hello')
-  if(newTodo.value === ''){
+const addTodo = function(obj){
+  if(obj.value === ''){
     alert('内容を入力してください')
   }else{
     todos.value.push({
-      message: newTodo.value,
+      message: obj.value,
       isComplete: false,
     })
-    newTodo.value = ''
+    obj.value = ''
   }
 }
 const checkUpdate = function(e){

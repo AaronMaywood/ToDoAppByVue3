@@ -1,9 +1,11 @@
 <script setup>
+import { ref } from 'vue'
+const newTodo = ref('')
+
 const emit = defineEmits(['delete-done','add-todo'])
 
 const addTodo = (e) => {
-	console.log(e)
-	emit('add-todo')
+	emit('add-todo', newTodo)
 }
 
 </script>
