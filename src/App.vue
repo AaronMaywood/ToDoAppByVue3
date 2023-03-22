@@ -4,8 +4,8 @@ import { ref, reactive } from 'vue'
 const newTodo = ref('')
 let todos = ref([
   {
-    message:'初期表示でデータが何もない時、リストの位置に「ToDoがまだありません！」と表示する',
-    isComplete: false,
+    message:'データが何もない時、リストの位置に「ToDoがまだありません！」と表示する',
+    isComplete: true,
   },
   {
     message:'フォームに文字を入力し、追加ボタンを押すと文字列を元にToDoリストに追加される',
@@ -71,7 +71,8 @@ const deleteCompleted = () => {
     <input type="text" v-model="newTodo">
     <button>追加</button>
   </form>
-  <ul v-for="t in todos">
+  <p v-if="todos.length === 0">リストがまだありません</p>
+  <ul v-else v-for="t in todos">
     <li>
       <label>
         <input type="checkbox"
