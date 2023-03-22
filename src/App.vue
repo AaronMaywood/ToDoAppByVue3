@@ -17,11 +17,11 @@ let todos = ref([
   },
   {
     message:'フォームに文字が未入力時に追加ボタンを押しても、アラートが表示されリストに追加されない',
-    isComplete: false,
+    isComplete: true,
   },
   {
     message:'ToDo毎のチェックボックスのオンオフで文字列に完了済みのラインの切り替えができる',
-    isComplete: false,
+    isComplete: true,
   },
   {
     message:'完了済みを削除するボタンを押すとチェックボックスがオンになっているToDoが削除される',
@@ -30,11 +30,15 @@ let todos = ref([
 ])
 
 const addTodo = function(){
-  todos.push({
-    message: newTodo.value,
-    isComplete: false,
-  })
-  newTodo.value = ''
+  if(newTodo.value === ''){
+    alert('内容を入力してください')
+  }else{
+    todos.value.push({
+      message: newTodo.value,
+      isComplete: false,
+    })
+    newTodo.value = ''
+  }
 }
 const checkUpdate = function(e){
   console.log(e)
