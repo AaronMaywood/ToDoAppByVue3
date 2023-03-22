@@ -21,6 +21,10 @@ const addTodo = function(){
   newTodo.value = ''
   console.log(todos)
 }
+const checkUpdate = function(e){
+  // checked情報は↓のようにして取得できる
+  console.log(e.target.checked)
+}
 </script>
 
 <template>
@@ -30,6 +34,13 @@ const addTodo = function(){
     <button>追加</button>
   </form>
   <ul v-for="t in todos">
-    <li><input type="checkbox" v-bind:checked="t.isComplete">{{ t.message }}</li>
+    <li>
+      <label>
+        <input type="checkbox"
+          @click="checkUpdate"
+          v-bind:checked="t.isComplete"
+        >{{ t.message }}
+      </label>
+    </li>
   </ul>
 </template>
