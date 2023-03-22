@@ -1,6 +1,8 @@
 /* ToDoアプリ https://qiita.com/TakahiRoyte/items/a9aac2f069b99f3378c7 */
 <script setup>
 import { ref, reactive } from 'vue'
+import TodoAdd from './components/TodoAdd.vue'
+
 const newTodo = ref('')
 let todos = ref([
   {
@@ -66,11 +68,7 @@ const deleteCompleted = () => {
 </script>
 
 <template>
-  <button type="button" @click="deleteCompleted">完了済みを削除</button>
-  <form @submit.prevent="addTodo">
-    <input type="text" v-model="newTodo">
-    <button>追加</button>
-  </form>
+	<TodoAdd @delete-done="deleteCompleted" />
   <p v-if="todos.length === 0">リストがまだありません</p>
   <ul v-else v-for="t in todos">
     <li>
