@@ -4,6 +4,10 @@ import { ref, reactive } from 'vue'
 const newTodo = ref('')
 const todos = reactive([
   {
+    message:'ToDoアプリのプロトタイプを作る',
+    isComplete: true,
+  },
+  {
     message:'VueでToDoアプリを作る',
     isComplete: false,
   }
@@ -25,7 +29,7 @@ const addTodo = function(){
     <input type="text" v-model="newTodo">
     <button>追加</button>
   </form>
-  <ul>
-    <li><input type="checkbox">ToDoアプリのプロトタイプを作成する</li>
+  <ul v-for="t in todos">
+    <li><input type="checkbox" v-bind:checked="t.isComplete">{{ t.message }}</li>
   </ul>
 </template>
