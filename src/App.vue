@@ -32,6 +32,7 @@ let todos = ref([
 ])
 
 const addTodo = function(){
+	alert('hello')
   if(newTodo.value === ''){
     alert('内容を入力してください')
   }else{
@@ -68,7 +69,7 @@ const deleteCompleted = () => {
 </script>
 
 <template>
-	<TodoAdd @delete-done="deleteCompleted" />
+	<TodoAdd @delete-done="deleteCompleted"  @add-todo="addTodo" />
   <p v-if="todos.length === 0">リストがまだありません</p>
   <ul v-else v-for="t in todos">
     <li>

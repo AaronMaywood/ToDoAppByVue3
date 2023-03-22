@@ -1,5 +1,11 @@
 <script setup>
-const emit = defineEmits(['delete-done'])
+const emit = defineEmits(['delete-done','add-todo'])
+
+const addTodo = (e) => {
+	console.log(e)
+	emit('add-todo')
+}
+
 </script>
 
 <template>
