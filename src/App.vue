@@ -22,13 +22,24 @@ const addTodo = function(){
   console.log(todos)
 }
 const checkUpdate = function(e){
+  console.log(e.target)
   // checked情報は↓のようにして取得できる
   console.log(e.target.checked)
+}
+
+const deleteCompleted = () => {
+  console.log('delete')
+  console.log( todos.filter(t=>t.isComplete===false))
+  /* todos = todos.filter() のように上書きしようと思ったが、
+  todos はconst なので上書きできない。
+  また、let todos にしたとしても、上書きすることで reactive() オブジェクト
+  でなくなってしまうかもしれない？
+  */
 }
 </script>
 
 <template>
-  <button>完了済みを削除</button>
+  <button type="button" @click="deleteCompleted">完了済みを削除</button>
   <form @submit.prevent="addTodo">
     <input type="text" v-model="newTodo">
     <button>追加</button>
