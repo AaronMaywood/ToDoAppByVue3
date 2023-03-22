@@ -47,6 +47,8 @@ const addUser = function(){
   <ul>
     <li v-for="u in users">
       {{ u.firstName }} {{ u.lastName }}
+      <p v-if="u.isMember">メンバーです。</p>
+      <p v-else>メンバーではありません。</p>
     </li>
   </ul>
 </template>
