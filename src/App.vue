@@ -2,6 +2,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import TodoAdd from './components/TodoAdd.vue'
+import TodoList from './components/TodoList.vue'
 
 let todos = ref([
   {
@@ -67,16 +68,6 @@ const deleteCompleted = () => {
 </script>
 
 <template>
-	<TodoAdd @delete-done="deleteCompleted"  @add-todo="addTodo" />
-  <p v-if="todos.length === 0">リストがまだありません</p>
-  <ul v-else v-for="t in todos">
-    <li>
-      <label>
-        <input type="checkbox"
-          @click="checkUpdate"
-          v-model="t.isComplete"
-        >{{ t.message }}
-      </label>
-    </li>
-  </ul>
+  <TodoAdd @delete-done="deleteCompleted"  @add-todo="addTodo" />
+  <TodoList :todos="todos" />
 </template>
