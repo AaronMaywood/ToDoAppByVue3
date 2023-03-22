@@ -1,8 +1,8 @@
 /* ToDoアプリ https://qiita.com/TakahiRoyte/items/a9aac2f069b99f3378c7 */
 <script setup>
 import { ref, reactive } from 'vue'
-import TodoAdd from './components/TodoAdd.vue'
-import TodoList from './components/TodoList.vue'
+import TodoAdd from '@/components/TodoAdd.vue'
+import TodoList from '@/components/TodoList.vue'
 
 let todos = ref([
   {
