@@ -1,9 +1,20 @@
 <script setup>
 import { ref } from 'vue'
 
+// Composition API ではこのように router を初期化する
+// https://router.vuejs.org/guide/advanced/composition-api.html#accessing-the-router-and-current-route-inside-setup より
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+import MyButton from '@/components/basics/MyButton.vue'
+
 const props = defineProps({
 	todos: Array,
 })
+
+const openEditMode = (todo) => {
+	router.push('/edit') // ↑で初期化したrouter を使用している
+}
 </script>
 
 <template>
@@ -16,6 +27,7 @@ const props = defineProps({
           v-model="t.isComplete"
         >{{ t.message }}
       </label>
+	  <MyButton @click="openEditMode(t)">編集</MyButton>
     </li>
   </ul>
 </template>

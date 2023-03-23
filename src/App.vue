@@ -1,10 +1,8 @@
-<script setup>
-import Home from '@/components/pages/Home.vue'
-</script>
-
 <template>
+	<router-link to="/">Home</router-link> ・
+    <router-link to="/edit">Edit</router-link>
 	<h1>My App Todo</h1>
-	<Home />
+	<router-view />
 </template>
 
 <style>
