@@ -1,64 +1,14 @@
 <script setup>
-import { ref } from 'vue'
 import TodoAdd from '@/components/TodoAdd.vue'
 import TodoList from '@/components/TodoList.vue'
+import { ref, computed } from 'vue'
+import { mapStores } from 'pinia'
+import { useTodoStore } from '@/stores/todos'
 
-const todos = ref([
-  {
-    message:'データが何もない時、リストの位置に「ToDoがまだありません！」と表示する',
-    isComplete: true,
-  },
-  {
-    message:'フォームに文字を入力し、追加ボタンを押すと文字列を元にToDoリストに追加される',
-    isComplete: true,
-  },
-  {
-    message:'ToDoに追加したタイミングでフォームの文字列はクリアされる',
-    isComplete: true,
-  },
-  {
-    message:'フォームに文字が未入力時に追加ボタンを押しても、アラートが表示されリストに追加されない',
-    isComplete: true,
-  },
-  {
-    message:'ToDo毎のチェックボックスのオンオフで文字列に完了済みのラインの切り替えができる',
-    isComplete: true,
-  },
-  {
-    message:'完了済みを削除するボタンを押すとチェックボックスがオンになっているToDoが削除される',
-    isComplete: true,
-  },
-])
-
-const addTodo = function(obj){
-  if(obj.value === ''){
-    alert('内容を入力してください')
-  }else{
-    todos.value.push({
-      message: obj.value,
-      isComplete: false,
-    })
-    obj.value = ''
-  }
-}
-
-const deleteCompleted = () => {
-  /* todos = todos.filter() のように上書きしようと思ったが、
-  todos はconst なので上書きできない。
-  また、let todos にしたとしても、上書きすることで reactive() オブジェクト
-  でなくなってしまうかもしれない？
-  
-  ↓let todos を上書きしてみたが、やはり reactive() オブジェクトではなくなってしまっている
-    See:
-    https://i.gyazo.com/5a5ed99e0b551fbcde197b737ad6723c.png
-  ↓そこで、reactive() の代わりにref() を使用する
-  ref で作成した場合には、ref.value プロパティを利用できる
-  */
-  todos.value = todos.value.filter(t=>!t.isComplete)
-}
+const store = useTodoStore()
 </script>
 
 <template>
-  <TodoAdd @delete-done="deleteCompleted"  @add-todo="addTodo" />
-  <TodoList :todos="todos" />
+  <TodoAdd @delete-done="store.deleteCompleted" @add-todo="store.addTodo" />
+  <TodoList :todos="store.todos" />
 </template>
