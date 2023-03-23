@@ -1,9 +1,9 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import TodoAdd from '@/components/TodoAdd.vue'
 import TodoList from '@/components/TodoList.vue'
 
-let todos = ref([
+const todos = ref([
   {
     message:'データが何もない時、リストの位置に「ToDoがまだありません！」と表示する',
     isComplete: true,

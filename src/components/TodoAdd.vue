@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import MyButton from './basics/MyButton.vue'
+import MyButton from '@/components/basics/MyButton.vue'
 
 const newTodo = ref('')
 
