@@ -15,16 +15,8 @@ export const useTodoStore = defineStore('todos', () => {
 		todos.value = todos.value.filter(t=>!t.isComplete)
 	}
 
-	const addTodo = obj => {
-	  if(obj.value === ''){
-		alert('内容を入力してください')
-	  }else{
-		todos.value.push({
-		  message: obj.value,
-		  isComplete: false,
-		})
-		obj.value = ''
-	  }
+	const addTodo = newTodo => {
+		todos.value.push(newTodo)
 	}
 
 	return { todos,deleteCompleted,addTodo }

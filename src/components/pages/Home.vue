@@ -6,9 +6,21 @@ import { mapStores } from 'pinia'
 import { useTodoStore } from '@/stores/todos'
 
 const store = useTodoStore()
+
+const addTodoStore = newTodo => {
+  if(newTodo.value === ''){
+	alert('内容を入力してください')
+  }else{
+	store.addTodo({
+	  message: newTodo.value,
+	  isComplete: false,
+	})
+	newTodo.value = ''
+  }
+}
 </script>
 
 <template>
-  <TodoAdd @delete-done="store.deleteCompleted" @add-todo="store.addTodo" />
+  <TodoAdd @delete-done="store.deleteCompleted" @add-todo="addTodoStore" />
   <TodoList :todos="store.todos" />
 </template>
