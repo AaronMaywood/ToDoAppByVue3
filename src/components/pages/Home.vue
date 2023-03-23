@@ -21,6 +21,7 @@ const addTodoStore = newTodo => {
 </script>
 
 <template>
-  <TodoAdd @delete-done="store.deleteCompleted" @add-todo="addTodoStore" />
-  <TodoList :todos="store.todos" />
+	<p>完了済みの件数 {{ store.deletedNumber }}</p>
+	<TodoAdd @delete-done="store.deleteCompleted" @add-todo="addTodoStore" />
+	<TodoList :todos="store.todos" />
 </template>
