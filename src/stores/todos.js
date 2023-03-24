@@ -4,8 +4,10 @@ import { ref,computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useTodoStore = defineStore('todos', () => {
+	let nextId = 1
 	const todos = ref([
 	  {
+		id: 0,
 		message: 'ToDo in Pinia Store!',
 		isComplete: true,
 	  },
@@ -20,7 +22,7 @@ export const useTodoStore = defineStore('todos', () => {
 	}
 
 	const addTodo = newTodo => {
-		todos.value.push(newTodo)
+		todos.value.push({id:nextId++, ...newTodo})
 	}
 
 	return { todos,deleteCompleted,deletedNumber,addTodo }

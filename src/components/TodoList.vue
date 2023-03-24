@@ -13,7 +13,7 @@ const props = defineProps({
 })
 
 const openEditMode = (todo) => {
-	router.push('/edit') // ↑で初期化したrouter を使用している
+	router.push(`/edit/${todo.id}`)
 }
 </script>
 
